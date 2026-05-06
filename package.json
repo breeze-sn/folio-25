@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -18,23 +19,16 @@
     "react-persist": "^1.0.2",
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.28.0",
-    "react-scripts": "5.0.1",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.86.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "set GENERATE_SOURCEMAP=false && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"No test script configured\""
   },
   "browserslist": {
     "production": [
