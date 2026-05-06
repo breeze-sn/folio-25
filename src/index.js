@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react'
 import { store, } from "./store/store.js"
 import { Persistor } from './reducer.js';
-import {gsap} from "gsap";
 
 // Disable right-click and developer tools
 document.addEventListener('contextmenu', (e) => e.preventDefault());

@@ -31,7 +31,7 @@ function PageChange() {
             }, 1000);
                 return () => clearTimeout(slideInTimeout);
             }
-        }, [pageChange.mode, pageChange.url, dispatch]);
+        }, [pageChange.mode, pageChange.url, dispatch, navigate]);
 
     return (
         <>

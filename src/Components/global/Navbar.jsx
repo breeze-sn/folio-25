@@ -10,7 +10,6 @@ import Icon from './Icon'
 function Navbar() {
     const dispatch = useDispatch();
     const theme = useSelector((state) => state.themeReducer.mode)
-    const [navbarColor, setNavbarColor] = useState('var(--text-primary)');
     const [menuOpen, setMenuOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -20,13 +19,6 @@ function Navbar() {
             const scrollY = window.scrollY;
             const viewportHeight = window.innerHeight;
             
-            // Check if we're on mobile and in the dark dashboard section (first screen)
-            if (window.innerWidth <= 768 && scrollY < viewportHeight * 0.8) {
-                setNavbarColor('#ffffff');
-            } else {
-                setNavbarColor('var(--text-primary)');
-            }
-
             // Hide navbar on scroll up, show on scroll down
             if (scrollY > lastScrollY && scrollY > 100) {
                 // Scrolling up - hide navbar

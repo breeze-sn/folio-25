@@ -131,9 +131,9 @@ function Home() {
                 >
                     <div className={styles.footerTitle}>Quick Links</div>
                     <div className={styles.footerLinks}>
-                        <a onClick={() => changepage('/about')}>about</a>
-                        <a onClick={() => changepage('/project')}>projects</a>
-                        <a onClick={() => changepage('/contact')}>contact</a>
+                        <a href="/about" onClick={(e) => { e.preventDefault(); changepage('/about'); }}>about</a>
+                        <a href="/project" onClick={(e) => { e.preventDefault(); changepage('/project'); }}>projects</a>
+                        <a href="/contact" onClick={(e) => { e.preventDefault(); changepage('/contact'); }}>contact</a>
                     </div>
                 </div>
                 <HomeFooter />
