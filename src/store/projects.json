@@ -1,18 +1,38 @@
 [
     {
-        "name": "folio",
+        "name": "folio'25",
         "description": "Web Design",
         "about": "A minimally designed portfolio showcasing my work through a monochrome theme, emphasizing simplicity and visual consistency.",
         "skills": ["Adobe Illustrator", "Figma", "ReactJS"],
         "link": "https://github.com/breeze-sn/folio"
     },
     {
-        "name": "Quick Air",
-        "description": "UI/UX",
-        "about": "QuickAir is an AI-powered resume builder than lets users create personalized resumes through a simple chat with an intelligent assistant, making resume writing easy and accessible for everyone.",
-        "skills": ["Adobe Photoshop", "Adobe Illustrator", "Figma", "Framer"],
-        "link": "https://www.behance.net/gallery/230187655/Quick-Air"
-    
+        "name": "folio'26",
+        "description": "Web Design",
+        "about": "Portfolio site designed to present projects, currently under development.",
+        "skills":["Adobe Illustrator", "Figma", "ReactJS"],
+        "link": "https://www.simransn.tech"
+    },
+    {
+        "name": "ByteMe",
+        "description": "Web Design",
+        "about": "Turn your photos into pure text magic.",
+        "skills": ["Javascript", "NodeJS", "TensorFlow", "Figma"],
+        "link": "https://breeze-sn.github.io/ByteMe/"
+    },
+    {
+        "name": "REVA Rift",
+        "description": "Brand & Visual Design",
+        "about": "REVA Rift, a multi-domain tech fest website",
+        "skills": ["TypeScript", "Figma"],
+        "link": "https://www.revarift.tech/"
+    },
+    {
+        "name": "prompt2vote",
+        "description": "Web App",
+        "about": "Prompt2Vote is an interactive AI-powered guide to help users understand and navigate the voting process, developed as part of PromptWars.",
+        "skills": ["TypeScript", "Firebase", "React", "FramerMotion", "Figma"],
+        "link": "https://www.revarift.tech/"
     },
     {
         "name": "BallBack!",
@@ -28,6 +48,14 @@
         "about": "A community design showcasing  a cohesive visual identity of Google Developer Groups On Campus REVA University.",
         "skills": ["Adobe Illustrator", "Figma", "Affinity Designer"],
         "link": "https://www.behance.net/gallery/238530857/GDGoC-REVA-University-Community-Design-Identity"
+    },
+    {
+        "name": "Quick Air",
+        "description": "UI/UX",
+        "about": "QuickAir is an AI-powered resume builder than lets users create personalized resumes through a simple chat with an intelligent assistant, making resume writing easy and accessible for everyone.",
+        "skills": ["Adobe Photoshop", "Adobe Illustrator", "Figma", "Framer"],
+        "link": "https://www.behance.net/gallery/230187655/Quick-Air"
+    
     },
     {
         "name": "OXO Redesign",
