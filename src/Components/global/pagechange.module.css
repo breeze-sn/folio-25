@@ -3,33 +3,7 @@
     width: 100vw;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100vw;
     background-color: black;
     z-index: 1000;
-}
-
-.slidein {
-    animation: slidein 1s forwards ease;
-}
-
-.slideout {
-    animation: slideout 1s forwards ease;
-}
-
-@keyframes slidein {
-    0% {
-        left: -100vw;
-    }
-    100% {
-        left: 0;
-    }
-}
-
-@keyframes slideout {
-    0% {
-        left: 0;
-    }
-    100% {
-        left: -100vw;
-    }
 }
