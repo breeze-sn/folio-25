@@ -12,48 +12,34 @@ function PageChange() {
     const pageChange = useSelector((state) => state.globalReducer.pageChange);
 
     const screenRef = useRef(null);
-    const timelineRef = useRef(null);
     const isAnimatingRef = useRef(false);
+    const hasNavigatedRef = useRef(false);
 
     useEffect(() => {
         if (pageChange.mode && !isAnimatingRef.current && screenRef.current) {
             isAnimatingRef.current = true;
+            hasNavigatedRef.current = false;
 
-            // Create a GSAP timeline for smooth animation
-            const tl = gsap.timeline({
+            gsap.killTweensOf(screenRef.current);
+            gsap.set(screenRef.current, { xPercent: -120 });
+
+            gsap.to(screenRef.current, {
+                xPercent: 120,
+                duration: 1.1,
+                ease: 'power3.inOut',
+                onUpdate: () => {
+                    if (!hasNavigatedRef.current && gsap.getProperty(screenRef.current, 'xPercent') >= 0) {
+                        hasNavigatedRef.current = true;
+                        navigate(pageChange.url);
+                        window.scrollTo(0, 0);
+                    }
+                },
                 onComplete: () => {
                     isAnimatingRef.current = false;
                     dispatch({type: CHANGE_PAGE, payload: {url: pageChange.url, mode: false}});
                 }
             });
-
-            // Show the overlay and animate it in from left
-            tl.set(screenRef.current, { left: '-100vw' })
-                .to(screenRef.current, {
-                    left: 0,
-                    duration: 0.8,
-                    ease: 'power2.inOut'
-                }, 0)
-                .call(() => {
-                    // Navigate while overlay is covering the page
-                    navigate(pageChange.url);
-                    window.scrollTo(0, 0);
-                }, null, 0.4) // Happen midway through the slide-in
-                // Animate overlay out to the right
-                .to(screenRef.current, {
-                    left: '100vw',
-                    duration: 0.8,
-                    ease: 'power2.inOut'
-                }, 0.8);
-
-            timelineRef.current = tl;
         }
-
-        return () => {
-            if (timelineRef.current) {
-                timelineRef.current.kill();
-            }
-        };
     }, [pageChange.mode, pageChange.url, dispatch, navigate]);
 
     return (
@@ -63,6 +49,11 @@ function PageChange() {
                 className={styles.screenblock}
                 style={{ pointerEvents: 'none' }}
             />
+            {pageChange.mode && (
+                <div className={styles.labelWrap} aria-hidden="true">
+                    <span className={styles.label}>Loading page</span>
+                </div>
+            )}
         </>
     )
 }

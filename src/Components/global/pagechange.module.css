@@ -3,7 +3,71 @@
     width: 100vw;
     position: fixed;
     top: 0;
-    left: -100vw;
-    background-color: black;
+    left: 0;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.02)),
+        linear-gradient(90deg, #0b1020 0%, #111827 45%, #06070d 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 80px rgba(15, 23, 42, 0.35);
     z-index: 1000;
+    will-change: transform;
+    transform: translate3d(-120%, 0, 0);
+    overflow: hidden;
+}
+
+.screenblock::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 25%, transparent 75%, rgba(255, 255, 255, 0.04));
+    opacity: 0.8;
+}
+
+.screenblock::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 28vw;
+    height: 140%;
+    background: linear-gradient(180deg, rgba(103, 232, 249, 0), rgba(103, 232, 249, 0.18), rgba(168, 85, 247, 0));
+    filter: blur(18px);
+    transform: skewX(-12deg);
+    opacity: 0.9;
+}
+
+.labelWrap {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 1001;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f8fafc;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.label::before {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: #67e8f9;
+    box-shadow: 0 0 14px rgba(103, 232, 249, 0.95);
 }
