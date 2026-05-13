@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { HelmetProvider } from 'react-helmet-async';
+import { Analytics } from '@vercel/analytics/react';
 
 import "./App.css"
 import Home from "./Pages/Home.jsx";
@@ -45,6 +46,7 @@ function App() {
                     <GlobalFooter/>
                 </BrowserRouter>
             </HelmetProvider>
+            <Analytics />
         </>
     )
 }
