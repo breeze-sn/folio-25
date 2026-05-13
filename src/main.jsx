@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './poppins-fonts.css';
 import './index.css';
 import './fontEnforcer';
-import App from './App.js';
+import App from './App.jsx';
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react'
-import { store, } from "./store/store.js"
-import { Persistor } from './reducer.js';
+import { store, Persistor } from "./reducer.js";
 
 // Disable right-click and developer tools
 document.addEventListener('contextmenu', (e) => e.preventDefault());
