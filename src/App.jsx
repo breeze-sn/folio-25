@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -10,10 +11,26 @@ import ProjectPage from "./Pages/ProjectPage.jsx";
 import ProjectsPage from "./Pages/ProjectsPage.jsx";
 import ContactPage from "./Pages/ContactPage.jsx";
 import AboutPage from "./Pages/AboutPage.jsx";
+import LoadingScreen from "./Components/global/LoadingScreen.jsx";
 
 function App() {
+    const [showLoading, setShowLoading] = useState(() => {
+        // Only show loading screen on first visit
+        if (typeof window !== 'undefined') {
+            return !sessionStorage.getItem('loadingScreenShown');
+        }
+        return false;
+    });
+
+    useEffect(() => {
+        if (showLoading) {
+            sessionStorage.setItem('loadingScreenShown', 'true');
+        }
+    }, [showLoading]);
+
     return (
         <>
+            {showLoading && <LoadingScreen onComplete={() => setShowLoading(false)} />}
             <HelmetProvider>
                 <BrowserRouter>
                     <Navbar/>

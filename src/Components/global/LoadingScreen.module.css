@@ -1,0 +1,102 @@
+.loadingScreenContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-primary, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 0.8s ease-out 2s forwards;
+}
+
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.name {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--text-primary, #fff);
+  margin: 0;
+  letter-spacing: 0.5px;
+  animation: slideIn 0.8s ease-out;
+}
+
+.loadingBarContainer {
+  width: 200px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loadingBar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--text-primary, #fff),
+    transparent
+  );
+  width: 50%;
+  animation: loadingAnimation 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(400%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .loadingScreenContainer {
+    height: 100vh;
+  }
+
+  .name {
+    font-size: 1.75rem;
+  }
+
+  .loadingBarContainer {
+    width: 150px;
+  }
+}
