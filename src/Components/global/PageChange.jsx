@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from "./pagechange.module.css"
@@ -12,26 +12,32 @@ function PageChange() {
 
     const [animationClass, setAnimationClass] = useState('');
     const [showBlock, setShowBlock] = useState(false);
+    const timeoutRef = useRef(null);
 
-        useEffect(() => {
-            if (pageChange.mode) {
-                setShowBlock(true);
-                setAnimationClass(styles.slidein);
-                const slideInTimeout = setTimeout(() => {
-                    navigate(pageChange.url);
-                    window.scrollTo(0, 0);
-                    setAnimationClass(styles.slideout);
-                    const slideOutTimeout = setTimeout(() => {
-                        setShowBlock(false);
-                        setAnimationClass('');
-                        dispatch({type: CHANGE_PAGE,payload: {url: pageChange.url,mode: false}});
-                    }, 1000);
-
-                    return () => clearTimeout(slideOutTimeout);
+    useEffect(() => {
+        if (pageChange.mode) {
+            setShowBlock(true);
+            setAnimationClass(styles.slidein);
+            
+            timeoutRef.current = setTimeout(() => {
+                navigate(pageChange.url);
+                window.scrollTo(0, 0);
+                setAnimationClass(styles.slideout);
+                
+                timeoutRef.current = setTimeout(() => {
+                    setShowBlock(false);
+                    setAnimationClass('');
+                    dispatch({type: CHANGE_PAGE, payload: {url: pageChange.url, mode: false}});
+                }, 1000);
             }, 1000);
-                return () => clearTimeout(slideInTimeout);
-            }
-        }, [pageChange.mode, pageChange.url, dispatch, navigate]);
+
+            return () => {
+                if (timeoutRef.current) {
+                    clearTimeout(timeoutRef.current);
+                }
+            };
+        }
+    }, [pageChange.mode, pageChange.url, dispatch, navigate]);
 
     return (
         <>
